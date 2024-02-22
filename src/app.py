@@ -24,13 +24,6 @@ app.config['UPLOAD_FOLDER'] = '/data'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
-config = {
-    "url" : "localhost",
-    "port" : "9200",
-    "doc_type" : "ds"
-}
-
-index = Index(config)
 
 # wordt maar 1 keer gedaan na het opstarten
 @app.before_first_request
@@ -57,11 +50,6 @@ def hello_world():
     retStruc = {"app": "Data Stories Slurf=", "version": "0.1"}
     # jsonHeaders(response)
     return jsonify(retStruc)
-
-@app.route("/browse")
-def browse():
-    ret_struc = index.browse()
-    return jsonify(ret_struc)
 
 @app.route("/check_url", methods=['POST'])
 def check_url():
