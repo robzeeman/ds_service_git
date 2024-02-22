@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify, send_file, jsonify, abort
 import json
-from elastic_index import Index
 import requests
 import random
 import sqlite3 as sl
