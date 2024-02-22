@@ -1,10 +1,10 @@
 import sqlite3 as sl
 import json
 import os
-import shutil
+# import shutil
 import uuid
-from datetime import datetime
-from zoneinfo import ZoneInfo
+# from datetime import datetime
+# from zoneinfo import ZoneInfo
 from urllib.parse import urlparse
 
 import requests
@@ -55,7 +55,7 @@ def getDataStoriesDB():
     sql = "SELECT uuid, title, status, created, modified, owner, groep FROM stories"
     cur.execute(sql)
     names = list(map(lambda x: x[0], cur.description)) # ergens opgezocht
-    print('names', names)
+    # print('names', names)
     result = cur.fetchall()
 
     cur.close()
