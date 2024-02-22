@@ -1,0 +1,30 @@
+version: '2'
+
+
+services:
+  dsservice:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    container_name: ds-service
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.dsservice.loadbalancer.server.port=5000"
+      - "traefik.http.routers.dsservice.entrypoints=http"
+      - "traefik.http.routers.dsservice.rule=Host(`storyservice.sd.di.huc.knaw.nl`)"
+    expose:
+      - 5000
+    volumes:
+      - /home/robz/:/home
+      - ds-data:/app/data
+    networks:
+      - traefik-public
+      
+volumes:
+  ds-data:
+    external: true
+
+networks:
+  traefik-public:
+    external: true
