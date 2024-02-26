@@ -172,7 +172,7 @@ def deleteDataStoryFolder(uuid):
     
 
 def removeFromDB(uuid):
-    con = sl.connect('data/datastories.db')
+    con = sl.connect('/app/data/datastories.db')
     cur = con.cursor()
     sql = 'DELETE FROM stories WHERE uuid = ? LIMIT 1 '
     cur.execute(sql, (uuid,))
