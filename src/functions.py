@@ -109,7 +109,7 @@ def tooManyStories(max):
 
 def getNewId():
     # maakt gebruik van een sql lite database voor gegarandeerde oplopende unieke ids 
-    datadir = 'data'
+    datadir = '/app/data'
     unique_id = str(uuid.uuid4()) # kan misschien ook als database functie
     status = 'draft' # dubbelop?
     title = '[UNTITLED]'
@@ -161,7 +161,7 @@ def createDataStoryFolder(id, template):
     return True
 
 def deleteDataStoryFolder(uuid):
-    data = 'data/'
+    data = '/app/data/'
     directory = data + str(uuid)
     if os.path.exists(directory):
         # os.removedir
