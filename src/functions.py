@@ -11,7 +11,7 @@ import requests
 
 
 def createDataFolder():
-    data = 'data/'
+    data = '/app/data/'
     if not os.path.exists(data):
         os.makedirs(data)
     return True
@@ -24,7 +24,7 @@ def uri_validator(x):
         return 0
 
 def createDataStoriesDB():
-    data = 'data'
+    data = '/app/data'
     # if not os.path.exists(data):
     #     os.makedirs(data)
 
@@ -49,7 +49,7 @@ def createDataStoriesDB():
 
 
 def getDataStoriesDB():
-    data = 'data'
+    data = '/app/data'
     con = sl.connect(data + '/datastories.db')
     cur = con.cursor()   
     sql = "SELECT uuid, title, status, created, modified, owner, groep FROM stories"
@@ -81,7 +81,7 @@ def getDataStoriesDB():
 
 
 def getListUUIDs():
-    data = 'data'
+    data = '/app/data'
     con = sl.connect(data + '/datastories.db')
     cur = con.cursor()   
     sql = "SELECT uuid FROM stories"
@@ -98,7 +98,7 @@ def getListUUIDs():
 
 
 def tooManyStories(max):
-    data = 'data/'
+    data = '/app/data/'
  
     count = len(os.listdir(data))
     print('aantal dirs', count)
@@ -148,7 +148,7 @@ def getNewId():
 def createDataStoryFolder(id, template):
     # misschien ook een eens hiernaar kijken https://stackoverflow.com/questions/273192/how-do-i-create-a-directory-and-any-missing-parent-directories
     # os.path kan wel eens misgaan begrijp ik
-    data = 'data/'
+    data = '/app/data/'
     createDataFolder()
     directory = data + str(id)
     if not os.path.exists(directory):
@@ -184,7 +184,7 @@ def removeFromDB(uuid):
     return True
 
 def updateModifiedDate(unique_id, title):
-    datadir = 'data'
+    datadir = '/app/data'
     now = datetime.now(tz=ZoneInfo("Europe/Amsterdam"))
     modified = now.strftime("%Y-%m-%d %H:%M:%S")    # creation timestamp
     con = sl.connect(datadir + '/datastories.db')
@@ -212,7 +212,7 @@ def fs_tree_to_dict(path_):
 
 
 def getDataStory(uuid):
-    data = 'data/'
+    data = '/app/data/'
     directory = data + str(uuid) # misschien niet meer nodig
     filename = directory + '/datastory.json'
     datastory = {}
@@ -222,7 +222,7 @@ def getDataStory(uuid):
     return datastory
 
 def saveDataStory(datastory_id, datastory):
-    path = "data/" + str(datastory_id) + "/datastory.json"
+    path = "/app/data/" + str(datastory_id) + "/datastory.json"
 
     with open(path, 'w') as f:
         json.dump(datastory, f)
