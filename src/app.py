@@ -42,6 +42,8 @@ def after_request(response):
     response.headers['Access-Control-Allow-Headers'] = '*'
     response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
     # response.headers['Content-type'] = 'application/json'
+    if 'Cache-Control' not in response.headers:
+        response.headers['Cache-Control'] = 'no-store'
     return response
 
 
