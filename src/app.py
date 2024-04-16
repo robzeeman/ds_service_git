@@ -225,8 +225,13 @@ def resources(uuid, resourcetype, filename):
 
     filepath = 'data/' + uuid + '/resources/' + resourcetype + '/' + filename
     # TODO mime-types? Or does send_file this..
+    
+    	
     try:
-        return send_file(filepath)
+        if resourcetype = 'images':
+            return send_file(filepath, mimetype='image/jpg')
+        else:
+        	return send_file(filepath)
     except FileNotFoundError:
         abort(404)
     
