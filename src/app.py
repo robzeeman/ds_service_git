@@ -41,7 +41,6 @@ def after_request(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = '*'
     response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    # response.headers['Content-type'] = 'application/json'
     if 'Cache-Control' not in response.headers:
         response.headers['Cache-Control'] = 'no-store'
     return response
@@ -223,15 +222,10 @@ def resources(uuid, resourcetype, filename):
     # we can severe the api from the real path, safer I think
     # TODO checks and balances maybe 
 
-    filepath = 'data/' + uuid + '/resources/' + resourcetype + '/' + filename
+    filepath = '/app/data/' + uuid + '/resources/' + resourcetype + '/' + filename
     # TODO mime-types? Or does send_file this..
-    
-    	
     try:
-        if resourcetype == 'images':
-            return send_file(filepath, mimetype='image/jpg')
-        else:
-        	return send_file(filepath)
+        return send_file(filepath)
     except FileNotFoundError:
         abort(404)
     
