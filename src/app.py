@@ -41,7 +41,7 @@ def after_request(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = '*'
     response.headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
-    response.headers['Content-type'] = 'application/json'
+    # response.headers['Content-type'] = 'application/json'
     return response
 
 
