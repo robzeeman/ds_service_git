@@ -228,7 +228,7 @@ def resources(uuid, resourcetype, filename):
     
     	
     try:
-        if resourcetype = 'images':
+        if resourcetype == 'images':
             return send_file(filepath, mimetype='image/jpg')
         else:
         	return send_file(filepath)
