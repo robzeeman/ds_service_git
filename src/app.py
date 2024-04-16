@@ -190,7 +190,7 @@ def upload(): #uploaded file from js / react
     # filename = uploaded_file.filename
     content_type = request.files['file'].content_type
     
-    resources = "data/" + uuid + '/resources' # centraal definieren
+    resources = "/app/data/" + uuid + '/resources' # centraal definieren
 
     if content_type.startswith('image'):
         store = resources + '/images/'
